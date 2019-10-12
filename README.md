@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # onbase-report-helper README
 
 This is the README for your extension "onbase-report-helper". After writing up a brief description, we recommend including the following sections.
@@ -63,3 +64,6 @@ Added features X, Y, and Z.
 * [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**
+=======
+# vscode-extension-obreport
+>>>>>>> 40e8eaf0541002e69497e71d830c735afe072d1c
