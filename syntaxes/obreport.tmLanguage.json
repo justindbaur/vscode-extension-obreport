@@ -6,34 +6,26 @@
             "include": "#report-tag-expression"
         },
         {
-            "include": "report-tag-valid"
+            "include": "#report-tag-valid"
         },
         {
             "include": "#string"
         },
         {
             "include": "#comment"
-        },
-        {
-            "include": "text.html.basic"
         }
     ],
     "repository": {
-        "report-tag-expression": {
-            "begin": "\\<<",
-            "end": "\\>>",
-            "beginCaptures": {
-                "0": { "name": "punctuation.tag.open" }
-            },
-            "endCaptures": {
-                "0": { "name": "punctuation.tag.close" }
-            },
-            "name": "report-tag.group"
-        },
         "string": {
-            "name": "string",
             "begin": "\"",
-            "end": "\""
+            "beginCaptures": {
+                "0": { "name": "punctuation.definition.string.begin.html"}
+            },
+            "end": "(\")",
+            "endCaptures": {
+                "0": { "name": "punctuation.definition.string.end.html"}
+            },
+            "name": "string.quoted.double.html"
         },
         "comment": {
 			"begin": "<!--",
@@ -60,14 +52,14 @@
 			]
         },
         "report-tag-valid": {
-            "begin": "(?i)(&gt;)(&gt;)(Switch:|End|Case:)(?=\\s|/?&gt;&gt;)",
+            "begin": "(?i)(<<)(Switch|End|Case)(?=\\s|\/?(>>))",
             "beginCaptures": {
                 "0": { "name": "punctuation.definition.tag.begin.html" }
-            },
-            "end": "&gt;",
-            "endCapture": {
-                "0": { "name": "puntuation.definition.tag.end.html" }
             }
+        },
+        "report-tag-end-valid": {
+            "begin": ""
         }
+
     }
 }
