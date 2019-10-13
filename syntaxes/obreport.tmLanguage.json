@@ -1,15 +1,73 @@
 {
-    "scopeName": "todo-comment.injection",
-    "injectionSelector": "L:meta.",
+    "scopeName": "text.html.obreport",
+    "fileTypes": [".obreport"],
     "patterns": [
         {
-            "include": "#todo-keyword"
+            "include": "#report-tag-expression"
+        },
+        {
+            "include": "report-tag-valid"
+        },
+        {
+            "include": "#string"
+        },
+        {
+            "include": "#comment"
+        },
+        {
+            "include": "text.html.basic"
         }
     ],
     "repository": {
-        "todo-keyword": {
-            "match": "TODO",
-            "name": "keyword.todo"
+        "report-tag-expression": {
+            "begin": "\\<<",
+            "end": "\\>>",
+            "beginCaptures": {
+                "0": { "name": "punctuation.tag.open" }
+            },
+            "endCaptures": {
+                "0": { "name": "punctuation.tag.close" }
+            },
+            "name": "report-tag.group"
+        },
+        "string": {
+            "name": "string",
+            "begin": "\"",
+            "end": "\""
+        },
+        "comment": {
+			"begin": "<!--",
+			"captures": {
+				"0": {
+					"name": "punctuation.definition.comment.html"
+				}
+			},
+			"end": "-->",
+			"name": "comment.block.html",
+			"patterns": [
+				{
+					"match": "\\G-?>",
+					"name": "invalid.illegal.characters-not-allowed-here.html"
+				},
+				{
+					"match": "<!--(?!>)|<!-(?=-->)",
+					"name": "invalid.illegal.characters-not-allowed-here.html"
+				},
+				{
+					"match": "--!>",
+					"name": "invalid.illegal.characters-not-allowed-here.html"
+				}
+			]
+        },
+        "report-tag-valid": {
+            "begin": "(?i)(&gt;)(&gt;)(Switch:|End|Case:)(?=\\s|/?&gt;&gt;)",
+            "beginCaptures": {
+                "0": { "name": "punctuation.definition.tag.begin.html" }
+            },
+            "end": "&gt;",
+            "endCapture": {
+                "0": { "name": "puntuation.definition.tag.end.html" }
+            }
         }
     }
 }

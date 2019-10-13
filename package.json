@@ -25,25 +25,23 @@
 				"title": "Beautify Report"
 			}
 		],
-		"languages":[
+		"languages": [
 			{
 				"id": "obreport",
 				"aliases": [
 					"OnBase Report"
 				],
 				"extensions": [
-					".obreport",
-					".obr"
+					".obreport"
 				],
-				"firstLine": "<<RP-2.0>>",
 				"configuration": "./extensions/obreport/language-configuration.json"
 			}
 		],
 		"grammars": [
 			{
 				"language": "obreport",
-				"scopeName": "source.obreport",
-				"path": "./syntaxes/obreport.tmLanguage",
+				"scopeName": "text.html.obreport",
+				"path": "./syntaxes/obreport.tmLanguage.json"
 			}
 		]
 	},
