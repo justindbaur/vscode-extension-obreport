@@ -1,65 +1,66 @@
 {
     "scopeName": "text.html.obreport",
-    "fileTypes": [".obreport"],
+    "fileTypes": [
+        ".obreport"
+    ],
     "patterns": [
-        {
-            "include": "#report-tag-expression"
-        },
-        {
-            "include": "#report-tag-valid"
-        },
         {
             "include": "#string"
         },
         {
             "include": "#comment"
+        },
+        {
+            "include": "#report-tag-atttibute"
         }
     ],
     "repository": {
         "string": {
             "begin": "\"",
             "beginCaptures": {
-                "0": { "name": "punctuation.definition.string.begin.html"}
+                "0": {
+                    "name": "punctuation.definition.string.begin.html"
+                }
             },
             "end": "(\")",
             "endCaptures": {
-                "0": { "name": "punctuation.definition.string.end.html"}
+                "0": {
+                    "name": "punctuation.definition.string.end.html"
+                }
             },
             "name": "string.quoted.double.html"
         },
         "comment": {
-			"begin": "<!--",
-			"captures": {
-				"0": {
-					"name": "punctuation.definition.comment.html"
-				}
-			},
-			"end": "-->",
-			"name": "comment.block.html",
-			"patterns": [
-				{
-					"match": "\\G-?>",
-					"name": "invalid.illegal.characters-not-allowed-here.html"
-				},
-				{
-					"match": "<!--(?!>)|<!-(?=-->)",
-					"name": "invalid.illegal.characters-not-allowed-here.html"
-				},
-				{
-					"match": "--!>",
-					"name": "invalid.illegal.characters-not-allowed-here.html"
-				}
-			]
+            "begin": "<!--",
+            "captures": {
+                "0": {
+                    "name": "punctuation.definition.comment.html"
+                }
+            },
+            "end": "-->",
+            "name": "comment.block.html",
+            "patterns": [
+                {
+                    "match": "\\G-?>",
+                    "name": "invalid.illegal.characters-not-allowed-here.html"
+                },
+                {
+                    "match": "<!--(?!>)|<!-(?=-->)",
+                    "name": "invalid.illegal.characters-not-allowed-here.html"
+                },
+                {
+                    "match": "--!>",
+                    "name": "invalid.illegal.characters-not-allowed-here.html"
+                }
+            ]
         },
-        "report-tag-valid": {
-            "begin": "(?i)(<<)(Switch|End|Case)(?=\\s|\/?(>>))",
-            "beginCaptures": {
-                "0": { "name": "punctuation.definition.tag.begin.html" }
+        "report-tag-attribute": {
+            "match": "@\\w+",
+            "captures": {
+                "0": {
+                    "name": "entity.name.tag.html"
+                }
             }
-        },
-        "report-tag-end-valid": {
-            "begin": ""
         }
-
     }
 }

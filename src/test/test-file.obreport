@@ -4,10 +4,10 @@
 on serveral lines
 
 -->
-<<Switch: >>
 
+<<Switch: @Posted>>
+    <<Set: #postedBool = "this">>
 <<End>>
-
 <td>
 
 
